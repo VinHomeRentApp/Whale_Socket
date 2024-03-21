@@ -17,8 +17,3 @@ const handler = serverless(app)
 
 // Export the handler for serverless deployment
 export { handler }
-
-// Start the regular HTTP server
-server.listen(PORT, () => {
-  console.log(`Server is start at PORT: ${PORT}`)
-})
