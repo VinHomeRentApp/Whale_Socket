@@ -6,7 +6,7 @@ let io: SocketIOServer
 const socketSetup = (server: Server) => {
   io = new SocketIOServer(server, {
     cors: {
-      origin: process.env.PORT_CLIENT || 'http://localhost:4200',
+      origin: '*',
       methods: ['GET', 'POST']
     }
   })

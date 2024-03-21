@@ -6,7 +6,7 @@ let io;
 const socketSetup = (server) => {
     exports.io = io = new socket_io_1.Server(server, {
         cors: {
-            origin: process.env.PORT_CLIENT || 'http://localhost:4200',
+            origin: '*',
             methods: ['GET', 'POST']
         }
     });
