@@ -8,15 +8,16 @@ class EventServices {
       throw new BadRequestError('Cannot get data').getNotice()
     }
 
-    const { data } = req.body
+    const { userId, name } = req.body
 
-    if (!data) {
+    if (!userId || !name) {
       throw new BadRequestError('Cannot get status').getNotice()
     }
 
-    io.emit(`payment-success-${data}`, { data })
+    io.emit(`payment-success-${userId}`, { name })
+    io.emit(`payment-success-admin`, { userId, name })
 
-    return { data }
+    return { data: { userId, name } }
   }
 }
 

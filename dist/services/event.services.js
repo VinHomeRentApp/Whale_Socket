@@ -7,12 +7,13 @@ class EventServices {
         if (req.body === undefined) {
             throw new errorResponse_core_1.BadRequestError('Cannot get data').getNotice();
         }
-        const { data } = req.body;
-        if (!data) {
+        const { userId, name } = req.body;
+        if (!userId || !name) {
             throw new errorResponse_core_1.BadRequestError('Cannot get status').getNotice();
         }
-        socket_1.io.emit(`payment-success-${data}`, { data });
-        return { data };
+        socket_1.io.emit(`payment-success-${userId}`, { name });
+        socket_1.io.emit(`payment-success-admin`, { userId, name });
+        return { data: { userId, name } };
     }
 }
 exports.default = EventServices;
