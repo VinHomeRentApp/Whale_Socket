@@ -12,6 +12,10 @@ const socketSetup = (server) => {
     });
     io.on('connection', (socket) => {
         console.log('New client connected', socket.id);
+        socket.on('private-message', ({ recipient, message }) => {
+            io.to(recipient).emit('private-message', { sender: socket.id, message });
+        });
+        socket.on('check-status-payment', () => { });
         socket.on('disconnect', () => {
             console.log('Client disconnected', socket.id);
         });
