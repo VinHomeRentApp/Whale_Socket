@@ -14,12 +14,8 @@ class EventServices {
       throw new BadRequestError('Cannot get status').getNotice()
     }
 
-    setTimeout(() => {
-      io.emit(`payment-success-${data}`, { data })
-      console.log(data)
-    }, 4000)
+    io.emit(`payment-success-${data}`, { data })
 
-    // Optionally, you can return the interval ID if needed
     return { data }
   }
 }
