@@ -11,8 +11,11 @@ class EventServices {
         if (!data) {
             throw new errorResponse_core_1.BadRequestError('Cannot get status').getNotice();
         }
-        socket_1.io.emit(`payment-success-${data}`, { data });
-        console.log(data);
+        setTimeout(() => {
+            socket_1.io.emit(`payment-success-${data}`, { data });
+            console.log(data);
+        }, 4000);
+        // Optionally, you can return the interval ID if needed
         return { data };
     }
 }
