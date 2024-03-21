@@ -1,5 +1,3 @@
-// Trong file app.ts
-
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import dotenv from 'dotenv'
@@ -26,21 +24,13 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-// Define a router for the root URL ("/") to return "Hello"
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello')
-})
-
-// Mount other routes
 app.use('/api', Routes)
 
-// Handle 404 errors
 app.all('*', (req: Request, res: Response, next: NextFunction) => {
   const err = new NotFoundError(`Route ${req.originalUrl} not found`).getNotice() as any
   next(err)
 })
 
-// Error handling middleware
 app.use(errorHandler)
 
 export default app
