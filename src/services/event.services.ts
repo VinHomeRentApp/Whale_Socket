@@ -14,7 +14,7 @@ class EventServices {
       throw new BadRequestError('Cannot get status').getNotice()
     }
 
-    io.emit('payment-success', { data })
+    io.emit(`payment-success-${data}`, { data })
     return { data }
   }
 }

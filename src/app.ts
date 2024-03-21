@@ -7,6 +7,7 @@ import { DEFAULT_BASE_METHODS } from './constants'
 import { NotFoundError } from './core/errorResponse.core'
 import { errorHandler } from './middleware/errorHandler'
 import { Routes } from './routes'
+import path from 'path'
 
 const app: Express = express()
 
@@ -21,13 +22,17 @@ app.use(
   })
 )
 
+app.set('views', path.join(__dirname, 'views'))
+app.use('/', express.static(path.join(__dirname, '../public')))
+app.set('view engine', 'ejs')
+
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use('/api', Routes)
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Welcome to Whale Socket')
+  res.render('index')
 })
 
 app.all('*', (req: Request, res: Response, next: NextFunction) => {
