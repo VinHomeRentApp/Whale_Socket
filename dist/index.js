@@ -11,4 +11,5 @@ const server = app_1.default.listen(PORT, () => {
     console.log(`Server is start at PORT: ${PORT}`);
     (0, socket_1.socketSetup)(server);
 });
+//
 exports.default = server;
