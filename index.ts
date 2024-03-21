@@ -1,6 +1,6 @@
-import app from './app'
-import { socketSetup } from './config/socket'
-import { DEFAULT_PORT } from './constants'
+import app from './src/app'
+import { socketSetup } from './src/config/socket'
+import { DEFAULT_PORT } from './src/constants'
 
 const PORT = process.env.PORT || DEFAULT_PORT
 
