@@ -15,6 +15,8 @@ class EventServices {
     }
 
     io.emit(`payment-success-${data}`, { data })
+    console.log(data)
+
     return { data }
   }
 }
