@@ -11,7 +11,7 @@ class EventServices {
         if (!data) {
             throw new errorResponse_core_1.BadRequestError('Cannot get status').getNotice();
         }
-        socket_1.io.emit('payment-success', { data });
+        socket_1.io.emit(`payment-success-${data}`, { data });
         return { data };
     }
 }
