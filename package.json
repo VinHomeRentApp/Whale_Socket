@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npx nodemon",
     "build": "rimraf ./public && tsc && tsc-alias && mv ./dist ./public",
-    "start": "ts-node index.ts",
+    "start": "node index.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check .",
