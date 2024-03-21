@@ -26,6 +26,10 @@ app.use(bodyParser.json())
 
 app.use('/api', Routes)
 
+app.get('/', (req: Request, res: Response) => {
+  res.send('Welcome to Whale Socket')
+})
+
 app.all('*', (req: Request, res: Response, next: NextFunction) => {
   const err = new NotFoundError(`Route ${req.originalUrl} not found`).getNotice() as any
   next(err)
